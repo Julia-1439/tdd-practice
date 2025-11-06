@@ -21,5 +21,21 @@ describe("add", () => {
     expect(() => calc.add("5", "10")).toThrow());
 });
 
-// happy path for each operation: positive & negative numbers & zero
-// edge: invalid variable type
+describe("subtract", () => {
+  test("happy case (1): two positive nums", () =>
+    expect(calc.sub(4, 5)).toBe(-1));
+  test("happy case (2a): first negative num", () =>
+    expect(calc.sub(-2, 4)).toBe(-6));
+  test("happy case (2b): second negative num", () =>
+    expect(calc.sub(4, -3)).toBe(7));
+  test("happy case (3): two negative nums", () =>
+    expect(calc.sub(-10, -100)).toBe(90));
+  test("happy case (4): subtract from zero", () => 
+    expect(calc.sub(0, 5)).toBe(-5));
+  test("happy case (5): subtract two zeros", () => 
+    expect(calc.sub(0, 0)).toBe(0));
+  test("edge case (1): one invalid type", () => 
+    expect(() => calc.sub("2", 4)).toThrow());
+  test("edge case (2): two invalid types", () => 
+    expect(() => calc.sub("5", "10")).toThrow());
+});
