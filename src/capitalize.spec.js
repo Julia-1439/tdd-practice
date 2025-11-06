@@ -15,3 +15,7 @@ test("does nothing to empty string", () => {
 test("capitalized single character", () => {
   expect(capitalize("a")).toBe("A");
 });
+
+test("refuses to capitalize non-strings", () => {
+  expect(() => capitalize(5)).toThrow("Input must be a string");
+})
