@@ -11,3 +11,7 @@ test("happy path (2)", () => {
 test("does nothing to empty string", () => {
   expect(capitalize("")).toBe("");
 });
+
+test("capitalized single character", () => {
+  expect(capitalize("a")).toBe("A");
+});
