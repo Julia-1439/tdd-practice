@@ -15,6 +15,8 @@ describe("add", () => {
     expect(calc.add(0, 5)).toBe(5));
   test("happy case (5): adding two zeros", () => 
     expect(calc.add(0, 0)).toBe(0));
+  test("happy case (6): adding floats", () => 
+    expect(calc.add(0.2, 0.1)).toBeCloseTo(0.3));
   test("edge case (1): one invalid type", () => 
     expect(() => calc.add("2", 4)).toThrow());
   test("edge case (2): two invalid types", () => 
@@ -34,6 +36,8 @@ describe("subtract", () => {
     expect(calc.sub(0, 5)).toBe(-5));
   test("happy case (5): subtract two zeros", () => 
     expect(calc.sub(0, 0)).toBe(0));
+  test("happy case (6): subtract floats", () => 
+    expect(calc.sub(0.1, 0.2)).toBeCloseTo(-0.1));
   test("edge case (1): one invalid type", () => 
     expect(() => calc.sub("2", 4)).toThrow());
   test("edge case (2): two invalid types", () => 
