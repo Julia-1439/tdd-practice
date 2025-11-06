@@ -8,6 +8,7 @@ describe("operators exist", () => {
   test("add", () => expect(calc.add).toBeDefined());
   test("sub", () => expect(calc.sub).toBeDefined());
   test("div", () => expect(calc.div).toBeDefined());
+  test("mult", () => expect(calc.mult).toBeDefined());
 });
 
 describe("add", () => {
@@ -71,3 +72,13 @@ describe("divide", () => {
     expect(() => calc.div("5", "10")).toThrow());
 });
 
+describe("multiply", () => {
+  test("happy case: two positive ints", () => expect(calc.mult(4, 5)).toBe(20));
+  test("happy case: one negative int", () => expect(calc.mult(-3, 10)).toBe(-30));
+  test("edge case: mult by 0", () => expect(calc.mult(0, 10)).toBe(0));
+  test("edge case: floats", () => expect(calc.mult(3, 0.2 + 0.1)).toBeCloseTo(0.9));
+  test("edge case: one or more invalid types", () => {
+    return expect(() => calc.mult("3", 4)).toThrow() && 
+      expect(() => calc.mult("3", "4").toThrow());
+  });
+});
