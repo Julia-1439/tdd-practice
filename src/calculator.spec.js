@@ -49,3 +49,25 @@ describe("subtract", () => {
   test("edge case (2): two invalid types", () => 
     expect(() => calc.sub("5", "10")).toThrow());
 });
+
+describe("divide", () => {
+  test("happy case: divisible numbers", () =>
+    expect(calc.div(30, 6)).toBe(5));
+  test("happy case: indivisible numbers: numerator > denominator", () =>
+    expect(calc.div(24, 5)).toBe(4.8));
+  test("edge case: float imprecision", () => 
+    expect(calc.div(10, 3)).toBeCloseTo(3.33));
+  test("happy case: indivisible numbers: numerator < denominator", () =>
+    expect(calc.div(5, 10)).toBe(0.5));
+  test("happy case: numerator equals denominator", () =>
+    expect(calc.div(-10, -10)).toBe(1));
+  test("happy case (5): numerator is 0", () => 
+    expect(calc.div(0, 5)).toBe(0));
+  test("edge case: denominator is 0", () => 
+    expect(() => calc.div(10, 0)).toThrow());
+  test("edge case: one invalid type", () => 
+    expect(() => calc.div("2", 4)).toThrow());
+  test("edge case: two invalid types", () => 
+    expect(() => calc.div("5", "10")).toThrow());
+});
+
