@@ -4,6 +4,12 @@ test("calculator exists", () => {
   expect(calc).toBeDefined();
 });
 
+describe("operators exist", () => {
+  test("add", () => expect(calc.add).toBeDefined());
+  test("sub", () => expect(calc.sub).toBeDefined());
+  test("div", () => expect(calc.div).toBeDefined());
+});
+
 describe("add", () => {
   test("happy case (1): two positive nums", () =>
     expect(calc.add(4, 5)).toBe(9));
