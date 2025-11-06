@@ -16,11 +16,23 @@ function caesarCipher(str, key) {
   return str
     .split("")
     .map((char) => {
-      const newAscii = (char.charCodeAt(0) + key - 96) % 26 + 96;
-      const newChar = String.fromCharCode(newAscii);
+      const newCode = computeNewCode(char.charCodeAt(0), key);
+      const newChar = String.fromCharCode(newCode);
       return newChar;
     })
     .join("");
+}
+
+const LOWER_A_DIST_FROM_0 = "a".charCodeAt(0); // 97
+function computeNewCode(oldCode, key) {
+  let newCode = oldCode + key;
+  newCode = newCode - LOWER_A_DIST_FROM_0;
+
+  // Mod it to loop the letters back around
+  newCode = ((newCode % 26) + 26) % 26; // behaves like normal mod if newCode is positive. if negative, this expression circumvents JS's default way of modding negative numbers, in order to write the looping as expected
+
+  newCode += LOWER_A_DIST_FROM_0;
+  return newCode;
 }
 
 
